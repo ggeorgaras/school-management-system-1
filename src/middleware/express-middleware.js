@@ -1,19 +1,21 @@
-const {User} = require ('./../db/model/user');
+import logger from '../logger';
 
+const { findByToken } = require('../routes/application/dao/User/dao');
 
-let authenticate = (req,res,next) => {
-  
-    let token = req.header('x-auth');
-    
-    User.findByToken(token).then((user) => {
-        if(!user)
-            return Promise.reject();
-        req.user = user;
-        req.token = token;
-        next();
-    }).catch((err) => {
-        res.status(401).send();
-    });
-}
+const authenticate = async (req, res, next) => {
+  const token = req.header('x-auth');
+  logger.debug(`insde middleware:${token}`);
+  try {
+    const user = await findByToken(token);
+    if (!user) throw Error;
+    else {
+      req.user = user;
+      req.token = token;
+      next();
+    }
+  } catch (err) {
+    res.status(401).send(err);
+  }
+};
 
-module.exports = {authenticate};
+export default authenticate;

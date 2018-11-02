@@ -1,7 +1,8 @@
-import logger from '../../../logger';
-import User from '../../../db/model/user';
+import logger from '../../../../logger';
+import User from '../../../../db/model/user';
 
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 // const _ = require('lodash');
 
 const saveUser = async user =>
@@ -49,4 +50,34 @@ const updateToken = async (username: String, tokens: []) => {
     });
   });
 };
-export { saveUser, findByCredential, updateToken };
+
+const findByToken = token => {
+  logger.debug('Inside find by token');
+  let decoded;
+  // eslint-disable-next-line consistent-return
+  return new Promise((resolve, reject) => {
+    try {
+      decoded = jwt.verify(token, 'abc123');
+    } catch (err) {
+      logger.error('got error');
+      return reject();
+    }
+    User.findOne(
+      {
+        _id: decoded._id,
+        'tokens.token': token,
+        'tokens.access': 'auth',
+      },
+      (err, result) => {
+        if (err) {
+          logger.error(`Unable to save update to package in mongoDb. ${err}`);
+          reject(err);
+        } else {
+          logger.debug('Package update saved successfully to mongodb');
+          resolve(result);
+        }
+      },
+    );
+  });
+};
+export { saveUser, findByCredential, updateToken, findByToken };
