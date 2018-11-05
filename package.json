@@ -8,7 +8,8 @@
     "build-watch": "node tools/build.js --watch",
     "debug": "node --inspect=0.0.0.0:9229  tools/run.js",
     "dev": "node tools/run.js",
-    "start": "node build/server.js"
+    "start": "export NODE_ENV=development && node build/server.js",
+    "start-prod": "export NODE_ENV=production && node build/server.js"
   },
   "author": "",
   "license": "ISC",

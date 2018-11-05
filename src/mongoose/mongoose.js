@@ -1,7 +1,10 @@
 import mongoose from 'mongoose';
 
+require('../../config/config');
+
+console.log(`env: ${process.env.MONGODB_URI}`);
 mongoose.connect(
-  'mongodb://localhost:27017/SMS',
+  process.env.MONGODB_URI,
   { useNewUrlParser: true },
 );
 

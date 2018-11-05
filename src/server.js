@@ -3,10 +3,12 @@
 
 import app from './app';
 // import config from './config';
+require('../config/config');
 
 // Launch Node.js server
-const server = app.listen(5001, () => {
-  console.log(`Node.js server is listening on 5001`);
+const port = process.env.PORT;
+const server = app.listen(port, () => {
+  console.log(`Node.js server is listening on ${port}`);
 });
 // server.timeout = 600000; //by default 120000ms(2 min)
 

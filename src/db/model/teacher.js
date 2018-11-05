@@ -23,33 +23,43 @@ const teacherSchema = new mongoose.Schema({
   },
   timeTable: [
     {
-      class: {
+      day: {
         type: String,
         minlength: 1,
         required: true,
       },
-      sec: {
-        type: String,
-        minlength: 1,
-        required: true,
-      },
-      subject: {
-        type: String,
-        minlength: 1,
-        required: true,
-      },
-      startTime: {
-        type: String,
-        minlength: 1,
-        required: true,
-      },
-      endTime: {
-        type: String,
-        minlength: 1,
-        required: true,
-      },
+      value: [
+        {
+          class: {
+            type: String,
+            minlength: 1,
+            required: true,
+          },
+          sec: {
+            type: String,
+            minlength: 1,
+            required: true,
+          },
+          subject: {
+            type: String,
+            minlength: 1,
+            required: true,
+          },
+          startTime: {
+            type: String,
+            minlength: 1,
+            required: true,
+          },
+          endTime: {
+            type: String,
+            minlength: 1,
+            required: true,
+          },
+        },
+      ],
     },
   ],
+
   lastUpdated: {
     type: Date,
     minlength: 1,

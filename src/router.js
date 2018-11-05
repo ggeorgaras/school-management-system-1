@@ -8,7 +8,6 @@ import {
 import authenticate from './middleware/express-middleware';
 
 const router = new Router();
-router.use(authenticate);
 
 // Register your routes and middleware to handle them here!!
 const defaultEndpoint = (req, res) => {
@@ -21,9 +20,9 @@ router.post('/users', users);
 
 router.post('/users/login', login);
 
-router.get('/users/:id', getTeacher);
+router.get('/users/:id', authenticate, getTeacher);
 
-router.post('/users/:username', createTeacher);
+router.post('/users/:username', authenticate, createTeacher);
 
 // router.delete('/users/me/token', deleteToken);
 
