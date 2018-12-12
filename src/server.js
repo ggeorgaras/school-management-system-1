@@ -6,7 +6,7 @@ import app from './app';
 require('../config/config');
 
 // Launch Node.js server
-const port = process.env.PORT;
+const port = process.env.PORT || 5001;
 const server = app.listen(port, () => {
   console.log(`Node.js server is listening on ${port}`);
 });

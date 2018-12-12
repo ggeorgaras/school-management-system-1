@@ -2,9 +2,8 @@ import mongoose from 'mongoose';
 
 require('../../config/config');
 
-console.log(`env: ${process.env.MONGODB_URI}`);
 mongoose.connect(
-  process.env.MONGODB_URI,
+  process.env.MONGODB_URI || 'mongodb://localhost:27017/SMSTest',
   { useNewUrlParser: true },
 );
 

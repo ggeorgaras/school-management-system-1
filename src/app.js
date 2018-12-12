@@ -23,14 +23,8 @@ app.set('trust proxy', 'loopback');
 
 app.use(
   cors({
-    origin(origin, next) {
-      const whitelist = process.env.CORS_ORIGIN
-        ? process.env.CORS_ORIGIN.split(',')
-        : [];
-      next(null, whitelist.includes(origin));
-    },
-    credentials: true,
-  }),
+      exposedHeaders: ['x-auth'],
+      })
 );
 
 app.use(compression());
