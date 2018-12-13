@@ -14,7 +14,7 @@ const createTeacher = async (req, res) => {
       'timeTable',
     ]);
     // eslint-disable-next-line no-underscore-dangle
-    body._id = mongoose.Types.ObjectId(req.user._id);
+    body._id = req.user._id;
     body.lastUpdated = new Date().getTime();
     const teacher = new Teacher(body);
     const response = await saveTeacher(teacher);

@@ -73,7 +73,7 @@ const findByToken = token => {
           logger.error(`Unable to save update to package in mongoDb. ${err}`);
           reject(err);
         } else {
-          logger.debug('Package update saved successfully to mongodb');
+          logger.debug('User token verified!!');
           resolve(result);
         }
       },
