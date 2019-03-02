@@ -10,9 +10,9 @@ A mobile app to manage all the day to day work of a school teacher, student , pr
 # Tech Stack
 
 1. Node.js
-2. React
+2. React.js
 3. React Native
 4. Expo
-5. Express
+5. Express.js
 
 # The app is still in developement 
