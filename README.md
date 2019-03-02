@@ -7,4 +7,12 @@ A mobile app to manage all the day to day work of a school teacher, student , pr
 3. The Prinicple can review the progress of every students in the school.
 4. The parents of the student can review the progress of their child at school.
 
+# Tech Stack
+
+1. Node.js
+2. React
+3. React Native
+4. Expo
+5. Express
+
 # The app is still in developement 
